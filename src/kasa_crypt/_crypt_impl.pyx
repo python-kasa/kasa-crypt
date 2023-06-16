@@ -22,8 +22,8 @@ cdef char* _encrypt(const char *unencrypted):
     return encrypted
 
 def encrypt(string: str) -> bytes:
-    return _encrypt(string.encode('ascii'))
+    return _encrypt(string.encode('utf-8'))
 
 
 def decrypt(string: bytes) -> str:
-    return _decrypt(string).decode('ascii')
+    return _decrypt(string).decode('utf-8')
