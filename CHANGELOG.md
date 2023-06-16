@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.3 (2023-06-16)
+
+### Fix
+
+* Use safer impl ([`f9c560d`](https://github.com/bdraco/kasa-crypt/commit/f9c560db9888d18f79d924deedda39a4690976ed))
+
 ## v0.1.2 (2023-06-16)
 
 ### Fix
