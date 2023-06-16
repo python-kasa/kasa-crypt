@@ -1,0 +1,19 @@
+# Changes here will be overwritten by Copier
+_commit: d204290
+_src_path: gh:browniebroke/pypackage-template
+add_me_as_contributor: false
+copyright_year: '2023'
+documentation: false
+email: nick@koston.org
+full_name: J. Nick Koston
+github_username: bdraco
+initial_commit: true
+open_source_license: Apache Software License 2.0
+package_name: kasa_crypt
+project_name: kasa-crypt
+project_short_description: Fast kasa crypt
+project_slug: kasa-crypt
+run_poetry_install: true
+setup_github: true
+setup_pre_commit: true
+
