@@ -35,6 +35,16 @@ Install this via pip (or your favourite package manager):
 
 `pip install kasa-crypt`
 
+## Example usage
+
+```python
+from kasa_crypt import encrypt, decrypt
+
+encrypted = encrypt('{"hello":"world"}')
+decrypted = decrypt(encrypted[4:])  # Always a 4 byte header
+print (decrypted)
+```
+
 ## Contributors ✨
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
