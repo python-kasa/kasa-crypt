@@ -18,7 +18,7 @@ cdef char* _encrypt(const char *unencrypted):
     cdef char* encrypted = <char *> malloc((len(unencrypted)) * sizeof(char))
     if not encrypted:
         return NULL  # malloc failed
-    _decrypt_into(unencrypted, encrypted)
+    _encrypt_into(unencrypted, encrypted)
     return encrypted
 
 def encrypt(string: str) -> bytes:
