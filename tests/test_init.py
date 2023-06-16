@@ -74,3 +74,12 @@ def test_decrypt_unicode():
     d = "{'snowman': '\u2603'}"
 
     assert d == decrypt(e)
+
+
+def test_roundtrip():
+    d = json.dumps({"foo": 1, "bar": 2}) * 2048
+    encrypted = encrypt(d)
+    assert isinstance(encrypted, bytes)
+    decrypted = decrypt(encrypted[4:])
+    assert isinstance(decrypted, str)
+    assert d == decrypted
