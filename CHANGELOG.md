@@ -2,6 +2,16 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.0 (2023-06-16)
+
+### Feature
+
+* Add more test cover ([`bab1e20`](https://github.com/bdraco/kasa-crypt/commit/bab1e20a090a026d67de09576154c3bd41a317a0))
+
+### Fix
+
+* Ensure bytes with null chars are returned ([`4a09a40`](https://github.com/bdraco/kasa-crypt/commit/4a09a405167dd697f1208a36e1434567b0f942d6))
+
 ## v0.1.5 (2023-06-16)
 
 ### Fix
