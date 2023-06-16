@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.4 (2023-06-16)
+
+### Fix
+
+* Use strlen ([`9ded535`](https://github.com/bdraco/kasa-crypt/commit/9ded53569d246e890222525a1b735f99404486c1))
+
 ## v0.1.3 (2023-06-16)
 
 ### Fix
