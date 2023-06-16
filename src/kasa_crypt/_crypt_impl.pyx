@@ -8,14 +8,14 @@ cdef extern from "crypt_wrapper.h":
     void _decrypt_into(const char * encrypted, char * unencrypted)
 
 cdef char* _decrypt(const char *encrypted):
-    cdef char* unencrypted = <char *> malloc(sizeof(encrypted) + 1)
+    cdef char* unencrypted = <char *> malloc(((len(encrypted)) + 1) * sizeof(char))
     if not unencrypted:
         return NULL  # malloc failed
     _decrypt_into(encrypted, unencrypted)
     return unencrypted
 
 cdef char* _encrypt(const char *unencrypted):
-    cdef char* encrypted = <char *> malloc(sizeof(unencrypted) + 1)
+    cdef char* encrypted = <char *> malloc(((len(unencrypted)) + 1) * sizeof(char))
     if not encrypted:
         return NULL  # malloc failed
     _encrypt_into(unencrypted, encrypted)
