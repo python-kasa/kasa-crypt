@@ -16,7 +16,7 @@ def encrypt(string: str) -> bytes:
 def decrypt(string: bytes) -> str:
     """Decrypt."""
     key = 171
-    result = bytearray(string)
+    result = bytearray(len(string))
     for idx, i in enumerate(string):
         a = key ^ i
         key = i
