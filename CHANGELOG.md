@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.5 (2023-06-16)
+
+### Fix
+
+* Handle 0s in the byte stream ([`532bd3c`](https://github.com/bdraco/kasa-crypt/commit/532bd3c195f47d91f50ffa23ab4b2b045c5de22c))
+
 ## v0.1.4 (2023-06-16)
 
 ### Fix
