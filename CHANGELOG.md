@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.1 (2023-06-16)
+
+### Fix
+
+* Add missing nulls ([`e7919f0`](https://github.com/bdraco/kasa-crypt/commit/e7919f0104c98855e6af1010f07f00b038279b40))
+
 ## v0.1.0 (2023-06-16)
 
 ### Feature
