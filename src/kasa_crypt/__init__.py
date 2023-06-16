@@ -8,8 +8,8 @@ try:
     from ._crypt_impl import decrypt
     from ._crypt_impl import encrypt as _encrypt
 except ImportError:
-    from .kasa_crypt import decrypt_pure_python as decrypt
-    from .kasa_crypt import encrypt_pure_python as _encrypt
+    from .python_impl import decrypt_pure_python as decrypt
+    from .python_impl import encrypt_pure_python as _encrypt
 
 
 def encrypt(string: str) -> bytes:
