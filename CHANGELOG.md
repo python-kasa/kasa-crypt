@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.2 (2023-06-16)
+
+### Fix
+
+* Malloc for null byte ([`5e79680`](https://github.com/bdraco/kasa-crypt/commit/5e79680eaaeabeb08698937ba4c93b5c28029e7e))
+
 ## v0.1.1 (2023-06-16)
 
 ### Fix
