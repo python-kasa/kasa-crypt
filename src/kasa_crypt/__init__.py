@@ -1,5 +1,20 @@
 __version__ = "0.0.0"
 
-from .kasa_crypt import decrypt, encrypt
+from struct import Struct
+
+_pack_header = Struct(">I").pack
+
+try:
+    from ._crypt_impl import decrypt
+    from ._crypt_impl import encrypt as _encrypt
+except ImportError:
+    from .kasa_crypt import decrypt_pure_python as decrypt
+    from .kasa_crypt import encrypt_pure_python as _encrypt
+
+
+def encrypt(string: str) -> bytes:
+    """Encrypt."""
+    return _pack_header(len(string)) + _encrypt(string)
+
 
 __all__ = ["encrypt", "decrypt"]

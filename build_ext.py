@@ -3,7 +3,21 @@
 import contextlib
 import os
 from distutils.command.build_ext import build_ext
+from os.path import join
 from typing import Any
+
+try:
+    from setuptools import Extension
+except ImportError:
+    from distutils.core import Extension
+
+kasa_crypt_module = Extension(
+    "kasa_crypt._crypt_impl",
+    [
+        join("src", "kasa_crypt", "_crypt_impl.pyx"),
+    ],
+    language="c",
+)
 
 
 class BuildExt(build_ext):
@@ -22,7 +36,7 @@ def build(setup_kwargs: dict[Any, Any]) -> None:
             dict(
                 ext_modules=cythonize(
                     [
-                        "src/kasa_crypt/kasa_crypt.py",
+                        kasa_crypt_module,
                     ],
                     compiler_directives={"language_level": "3"},  # Python 3
                 ),

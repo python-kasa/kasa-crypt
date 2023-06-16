@@ -1,19 +1,16 @@
-from struct import pack
-
-
-def encrypt(string: str) -> bytes:
+def encrypt_pure_python(string: str) -> bytearray:
     """Encrypt."""
-    unencrypted = bytearray(string.encode())
+    unencrypted = string.encode()
     key = 171
     unencrypted_len = len(unencrypted)
     encrypted = bytearray(unencrypted_len)
     for idx, unencryptedbyte in enumerate(unencrypted):
         key = key ^ unencryptedbyte
         encrypted[idx] = key
-    return pack(">I", unencrypted_len) + encrypted
+    return encrypted
 
 
-def decrypt(string: bytes) -> str:
+def decrypt_pure_python(string: bytes) -> str:
     """Decrypt."""
     key = 171
     result = bytearray(len(string))
