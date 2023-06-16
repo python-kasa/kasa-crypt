@@ -5,7 +5,7 @@
 #include <string.h>
 
 
-void _encrypt_into(char * unencrypted, char * encrypted) {
+void _encrypt_into(const char * unencrypted, char * encrypted) {
     uint8_t unencrypted_byte;
     uint8_t key = 171;
     for(unsigned i = 0; i < strlen(unencrypted); i++) {
@@ -14,7 +14,7 @@ void _encrypt_into(char * unencrypted, char * encrypted) {
         encrypted[i] = key;
     }
 }
-void _decrypt_into(char * encrypted, char * unencrypted) {
+void _decrypt_into(const char * encrypted, char * unencrypted) {
     uint8_t unencrypted_byte;
     uint8_t encrypted_byte;
     uint8_t key = 171;
