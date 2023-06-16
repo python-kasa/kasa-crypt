@@ -32,6 +32,10 @@ python = "^3.7"
 pytest = "^7.0"
 pytest-cov = "^3.0"
 
+
+[tool.poetry.group.test.dependencies]
+cython = "^0.29.35"
+
 [tool.semantic_release]
 branch = "main"
 version_toml = "pyproject.toml:tool.poetry.version"
