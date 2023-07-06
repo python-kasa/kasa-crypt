@@ -5,6 +5,34 @@ from kasa_crypt import decrypt, encrypt
 # from
 # https://github.com/python-kasa/python-kasa/blob/master/kasa/tests/test_protocol.py
 
+PLAIN_TEXT_STRING = (
+    "\x00\x01\x02\x03\x04\x05\x06\x07\x08\t\n"
+    "\x0b"
+    "\x0c"
+    "\r"
+    "\x0e\x0f\x10\x11\x12\x13\x14\x15\x16\x17\x18\x19\x1a\x1b\x1c"
+    "\x1d"
+    "\x1e"
+    "\x1f "
+    "!\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\x7f\x80\x81\x82\x83\x84\x85"
+    "\x86\x87\x88\x89\x8a\x8b\x8c\x8d\x8e\x8f\x90\x91\x92\x93\x94\x95\x96\x97\x98\x99\x9a\x9b\x9c\x9d\x9e\x9f\xa0"
+    "¡¢£¤¥¦§¨©ª«¬"
+)
+ENCRYPTED_BYTE_WITH_NULLS = (
+    b"\x00\x00\x00\xad\xab\xaa\xa8\xab\xaf\xaa\xac\xab\xa3\xaa\xa0\xab"
+    b"\xa7\xaa\xa4\xab\xbb\xaa\xb8\xab\xbf\xaa\xbc\xab\xb3\xaa\xb0\xab"
+    b"\xb7\xaa\xb4\xab\x8b\xaa\x88\xab\x8f\xaa\x8c\xab\x83\xaa\x80\xab"
+    b"\x87\xaa\x84\xab\x9b\xaa\x98\xab\x9f\xaa\x9c\xab\x93\xaa\x90\xab"
+    b"\x97\xaa\x94\xab\xeb\xaa\xe8\xab\xef\xaa\xec\xab\xe3\xaa\xe0\xab"
+    b"\xe7\xaa\xe4\xab\xfb\xaa\xf8\xab\xff\xaa\xfc\xab\xf3\xaa\xf0\xab"
+    b"\xf7\xaa\xf4\xab\xcb\xaa\xc8\xab\xcf\xaa\xcc\xab\xc3\xaa\xc0\xab"
+    b"\xc7\xaa\xc4\xab\xdb\xaa\xd8\xab\xdf\xaa\xdc\xab\xd3\xaa\xd0\xab"
+    b"\xd7\xaa\xd4\xabi\xe9+\xaah\xea(\xabi\xed/\xaah\xee,\xabi\xe1#\xaah\xe2 \xab"
+    b"i\xe5'\xaah\xe6$\xabi\xf9;\xaah\xfa8\xabi\xfd?\xaah\xfe<\xabi\xf13\xaa"
+    b"h\xf20\xabi\xf57\xaah\xf64\xabi\xc9\x0b\xaah\xca\x08\xabi\xcd\x0f\xaa"
+    b"h\xce\x0c\xabi\xc1\x03\xaah\xc2\x00\xabi\xc5"
+)
+
 
 def test_encrypt():
     d = json.dumps({"foo": 1, "bar": 2})
@@ -135,3 +163,16 @@ def test_decrypt_real_device():
         ' Rel.165938","hw_ver":"1.0","model":"EP40(US)","deviceId":"8006231E1499BAC4D4BC7EFCD4B075181E6393F2","oemId":"2F9215F1DCBF7DC17F80E2B0CACD47FC","hwId":"B3B7B05B758C3EDA8F9C69FECDBA2111","rssi":-40,"latitude_i":297852,"longitude_i":-954073,"alias":"TP-LINK_Smart'
         ' Plug_004F","status":"new","mic_type":"IOT.SMARTPLUGSWITCH","feature":"TIM","mac":"E8:48:B8:1E:00:4F","updating":0,"led_off":0,"children":[{"id":"00","state":1,"alias":"Zombie","on_time":470,"next_action":{"type":-1}},{"id":"01","state":1,"alias":"Magic","on_time":174,"next_action":{"type":-1}}],"child_num":2,"ntc_state":0,"err_code":0}}}'
     )
+
+
+def test_roundtrip_with_nulls():
+    assert decrypt(ENCRYPTED_BYTE_WITH_NULLS[4:]) == PLAIN_TEXT_STRING
+
+
+def test_encrypt_with_nulls():
+    string_with_nulls = b"this\x00has\x00nulls".decode()
+    assert (
+        encrypt(string_with_nulls)
+        == b"\x00\x00\x00\x0e\xdf\xb7\xde\xad\xad\xc5\xa4\xd7\xd7\xb9\xcc\xa0\xcc\xbf"
+    )
+    assert decrypt(encrypt(string_with_nulls)[4:]) == string_with_nulls
