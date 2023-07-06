@@ -167,3 +167,12 @@ def test_decrypt_real_device():
 
 def test_roundtrip_with_nulls():
     assert decrypt(ENCRYPTED_BYTE_WITH_NULLS[4:]) == PLAIN_TEXT_STRING
+
+
+def test_encrypt_with_nulls():
+    string_with_nulls = b"this\x00has\x00nulls".decode()
+    assert (
+        encrypt(string_with_nulls)
+        == b"\x00\x00\x00\x0e\xdf\xb7\xde\xad\xad\xc5\xa4\xd7\xd7\xb9\xcc\xa0\xcc\xbf"
+    )
+    assert decrypt(encrypt(string_with_nulls)[4:]) == string_with_nulls
