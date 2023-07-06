@@ -22,8 +22,9 @@ cdef void _encrypt(const char *unencrypted, char** encrypted, Py_ssize_t length)
 
 def encrypt(string: str) -> bytes:
     cdef char* encrypted = NULL
-    cdef Py_ssize_t length = len(string)
-    _encrypt(string.encode('utf-8'), &encrypted, length)
+    py_byte_string = string.encode('utf-8')
+    cdef Py_ssize_t length = len(py_byte_string)
+    _encrypt(py_byte_string, &encrypted, length)
     try:
         return encrypted[:length]
     finally:
