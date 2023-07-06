@@ -69,6 +69,7 @@ def test_encrypt_unicode():
     )
 
     encrypted = encrypt(d)
+    assert len(encrypted) - 4 == len(d)
     # encrypt adds a 4 byte header
     encrypted = encrypted[4:]
 
