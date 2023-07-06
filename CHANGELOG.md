@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.2.1 (2023-07-06)
+
+### Fix
+
+* Ensure null bytes round trip ([#3](https://github.com/bdraco/kasa-crypt/issues/3)) ([`9512615`](https://github.com/bdraco/kasa-crypt/commit/951261514662893b114c600728781736a1600f6e))
+
 ## v0.2.0 (2023-06-16)
 
 ### Feature
