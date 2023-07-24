@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.3.0 (2023-07-24)
+
+### Feature
+
+* Initial cpython 3.12 support ([#4](https://github.com/bdraco/kasa-crypt/issues/4)) ([`15c7987`](https://github.com/bdraco/kasa-crypt/commit/15c7987db96354822010c239caa5add9948c81c8))
+
 ## v0.2.1 (2023-07-06)
 
 ### Fix
