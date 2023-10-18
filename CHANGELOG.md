@@ -2,6 +2,16 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.0 (2023-10-18)
+
+### Feature
+
+* Build wheels with final cpython release ([#5](https://github.com/bdraco/kasa-crypt/issues/5)) ([`915697b`](https://github.com/bdraco/kasa-crypt/commit/915697b736b4fd7398dd8b5cbaf9e6dc5125ddcb))
+
+### Fix
+
+* Reduce size of wheels by excluding generated .c files ([#6](https://github.com/bdraco/kasa-crypt/issues/6)) ([`a25ebca`](https://github.com/bdraco/kasa-crypt/commit/a25ebca4de36c9f6eb2a7722eeed721fa69177c7))
+
 ## v0.3.0 (2023-07-24)
 
 ### Feature
