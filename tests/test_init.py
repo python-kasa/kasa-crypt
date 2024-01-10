@@ -1,4 +1,5 @@
 import json
+import struct
 
 from kasa_crypt import decrypt, encrypt
 
@@ -36,16 +37,20 @@ ENCRYPTED_BYTE_WITH_NULLS = (
 
 def test_encrypt():
     d = json.dumps({"foo": 1, "bar": 2})
+    encoded = d.encode("utf-8")
     encrypted = encrypt(d)
     # encrypt adds a 4 byte header
+    assert struct.unpack(">I", encrypted[:4]) == len(encoded)
     encrypted = encrypted[4:]
     assert d == decrypt(encrypted)
 
 
 def test_encrypt_utf8():
     d = json.dumps({"漢字": 1, "bar": 2})
+    encoded = d.encode("utf-8")
     encrypted = encrypt(d)
     # encrypt adds a 4 byte header
+    assert struct.unpack(">I", encrypted[:4]) == len(encoded)
     encrypted = encrypted[4:]
     assert d == decrypt(encrypted)
 
