@@ -1,6 +1,5 @@
-def encrypt_pure_python(string: str) -> bytearray:
+def encrypt_pure_python(unencrypted: bytes) -> bytearray:
     """Encrypt."""
-    unencrypted = string.encode()
     key = 171
     unencrypted_len = len(unencrypted)
     encrypted = bytearray(unencrypted_len)

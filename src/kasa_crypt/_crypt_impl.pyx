@@ -20,9 +20,8 @@ cdef void _encrypt(const char *unencrypted, char** encrypted, Py_ssize_t length)
         return  # malloc failed
     _encrypt_into(unencrypted, encrypted[0], length)
 
-def encrypt(string: str) -> bytes:
+def encrypt(py_byte_string: bytes) -> bytes:
     cdef char* encrypted = NULL
-    py_byte_string = string.encode('utf-8')
     cdef Py_ssize_t length = len(py_byte_string)
     _encrypt(py_byte_string, &encrypted, length)
     try:
