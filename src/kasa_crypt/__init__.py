@@ -14,7 +14,8 @@ except ImportError:
 
 def encrypt(string: str) -> bytes:
     """Encrypt."""
-    return _pack_header(len(string)) + _encrypt(string)
+    encoded = string.encode("utf-8")
+    return _pack_header(len(encoded)) + _encrypt(encoded)
 
 
 __all__ = ["encrypt", "decrypt"]

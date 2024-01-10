@@ -42,6 +42,14 @@ def test_encrypt():
     assert d == decrypt(encrypted)
 
 
+def test_encrypt_utf8():
+    d = json.dumps({"漢字": 1, "bar": 2})
+    encrypted = encrypt(d)
+    # encrypt adds a 4 byte header
+    encrypted = encrypted[4:]
+    assert d == decrypt(encrypted)
+
+
 def test_encrypt_unicode():
     d = "{'snowman': '\u2603'}"
 
