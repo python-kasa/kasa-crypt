@@ -35,7 +35,7 @@ ENCRYPTED_BYTE_WITH_NULLS = (
 )
 
 
-def test_encrypt():
+def test_encrypt_json():
     d = json.dumps({"foo": 1, "bar": 2})
     encoded = d.encode("utf-8")
     encrypted = encrypt(d)
@@ -45,8 +45,18 @@ def test_encrypt():
     assert d == decrypt(encrypted)
 
 
-def test_encrypt_utf8():
+def test_encrypt_utf8_json():
     d = json.dumps({"漢字": 1, "bar": 2})
+    encoded = d.encode("utf-8")
+    encrypted = encrypt(d)
+    # encrypt adds a 4 byte header
+    assert struct.unpack(">I", encrypted[:4])[0] == len(encoded)
+    encrypted = encrypted[4:]
+    assert d == decrypt(encrypted)
+
+
+def test_encrypt_utf8():
+    d = "漢字"
     encoded = d.encode("utf-8")
     encrypted = encrypt(d)
     # encrypt adds a 4 byte header
