@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.1 (2024-01-10)
+
+### Fix
+
+* Encryption input with wide characters ([#7](https://github.com/bdraco/kasa-crypt/issues/7)) ([`5dae424`](https://github.com/bdraco/kasa-crypt/commit/5dae4244a157e802c5698feaf5144419b191b5ef))
+
 ## v0.4.0 (2023-10-18)
 
 ### Feature
