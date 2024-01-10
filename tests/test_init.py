@@ -40,7 +40,7 @@ def test_encrypt():
     encoded = d.encode("utf-8")
     encrypted = encrypt(d)
     # encrypt adds a 4 byte header
-    assert struct.unpack(">I", encrypted[:4]) == len(encoded)
+    assert struct.unpack(">I", encrypted[:4])[0] == len(encoded)
     encrypted = encrypted[4:]
     assert d == decrypt(encrypted)
 
@@ -50,7 +50,7 @@ def test_encrypt_utf8():
     encoded = d.encode("utf-8")
     encrypted = encrypt(d)
     # encrypt adds a 4 byte header
-    assert struct.unpack(">I", encrypted[:4]) == len(encoded)
+    assert struct.unpack(">I", encrypted[:4])[0] == len(encoded)
     encrypted = encrypted[4:]
     assert d == decrypt(encrypted)
 
