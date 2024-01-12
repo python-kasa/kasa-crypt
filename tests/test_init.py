@@ -199,3 +199,13 @@ def test_encrypt_with_nulls():
         == b"\x00\x00\x00\x0e\xdf\xb7\xde\xad\xad\xc5\xa4\xd7\xd7\xb9\xcc\xa0\xcc\xbf"
     )
     assert decrypt(encrypt(string_with_nulls)[4:]) == string_with_nulls
+
+
+def test_encrypt_round_decreasing_size():
+    for i in range(0, 128):
+        payload = bytes([i] * i).decode()
+        assert decrypt(encrypt(payload)[4:]) == payload
+
+    for i in range(127, 0, -1):
+        payload = bytes([i] * i).decode()
+        assert decrypt(encrypt(payload)[4:]) == payload
