@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.2 (2024-05-07)
+
+### Fix
+
+* Use spdx identifier for the license ([#10](https://github.com/python-kasa/kasa-crypt/issues/10)) ([`e99038c`](https://github.com/python-kasa/kasa-crypt/commit/e99038c4b88a645fa3ffd046b7a88fd8d7b2c2f9))
+
 ## v0.4.1 (2024-01-10)
 
 ### Fix

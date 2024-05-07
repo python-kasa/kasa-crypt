@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kasa-crypt"
-version = "0.4.1"
+version = "0.4.2"
 description = "Fast kasa crypt"
 authors = ["J. Nick Koston <nick@koston.org>"]
 license = "Apache-2.0"
