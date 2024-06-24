@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.4 (2024-06-24)
+
+### Fix
+
+* Wheel builds ([#12](https://github.com/python-kasa/kasa-crypt/issues/12)) ([`945a33e`](https://github.com/python-kasa/kasa-crypt/commit/945a33e1950ab79d5a546f1fe0af0ecb1fa70f6b))
+
 ## v0.4.3 (2024-06-24)
 
 ### Fix
