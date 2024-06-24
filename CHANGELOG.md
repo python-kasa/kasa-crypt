@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.4.3 (2024-06-24)
+
+### Fix
+
+* Fix license classifier ([#11](https://github.com/python-kasa/kasa-crypt/issues/11)) ([`441db19`](https://github.com/python-kasa/kasa-crypt/commit/441db19ec3b66e7623d3ce0ca16e36a675b1ccb1))
+
 ## v0.4.2 (2024-05-07)
 
 ### Fix
