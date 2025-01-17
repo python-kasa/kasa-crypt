@@ -4,7 +4,7 @@ import contextlib
 import os
 from distutils.command.build_ext import build_ext
 from os.path import join
-from typing import Any, Dict
+from typing import Any
 
 try:
     from setuptools import Extension
@@ -26,7 +26,7 @@ class BuildExt(build_ext):
             super().build_extensions()
 
 
-def build(setup_kwargs: Dict[Any, Any]) -> None:
+def build(setup_kwargs: dict[Any, Any]) -> None:
     if os.environ.get("SKIP_CYTHON", False):
         return
     try:
