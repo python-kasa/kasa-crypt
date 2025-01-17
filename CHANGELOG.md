@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.5.0 (2025-01-17)
+
+### Feature
+
+* Publish arm wheels ([#14](https://github.com/python-kasa/kasa-crypt/issues/14)) ([`3ca116f`](https://github.com/python-kasa/kasa-crypt/commit/3ca116fe856ad0b4fd453feec263faaf77ed7b7d))
+
 ## v0.4.4 (2024-06-24)
 
 ### Fix
