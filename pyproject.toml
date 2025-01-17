@@ -26,7 +26,7 @@ script = "build_ext.py"
 "Changelog" = "https://github.com/bdraco/kasa-crypt/blob/main/CHANGELOG.md"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.9"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.0"
