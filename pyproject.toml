@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "kasa-crypt"
-version = "0.6.0"
+version = "0.6.1"
 description = "Fast kasa crypt"
 authors = ["J. Nick Koston <nick@koston.org>"]
 readme = "README.md"

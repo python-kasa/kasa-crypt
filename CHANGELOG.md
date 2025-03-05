@@ -1,6 +1,43 @@
 # CHANGELOG
 
 
+## v0.6.1 (2025-03-05)
+
+### Bug Fixes
+
+- Use trusted publishing for wheels ([#33](https://github.com/python-kasa/kasa-crypt/pull/33),
+  [`694cbbd`](https://github.com/python-kasa/kasa-crypt/commit/694cbbd6a45efd1ff544f2c9344d0613309ba08a))
+
+### Chores
+
+- **deps-dev**: Bump pytest from 8.3.4 to 8.3.5
+  ([#30](https://github.com/python-kasa/kasa-crypt/pull/30),
+  [`07fabee`](https://github.com/python-kasa/kasa-crypt/commit/07fabee1d3a43160fc07b339aec970dfcdf97b6b))
+
+Bumps [pytest](https://github.com/pytest-dev/pytest) from 8.3.4 to 8.3.5. - [Release
+  notes](https://github.com/pytest-dev/pytest/releases) -
+  [Changelog](https://github.com/pytest-dev/pytest/blob/main/CHANGELOG.rst) -
+  [Commits](https://github.com/pytest-dev/pytest/compare/8.3.4...8.3.5)
+
+--- updated-dependencies: - dependency-name: pytest dependency-type: direct:development
+
+update-type: version-update:semver-patch ...
+
+Signed-off-by: dependabot[bot] <support@github.com>
+
+Co-authored-by: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
+
+- **pre-commit.ci**: Pre-commit autoupdate
+  ([#29](https://github.com/python-kasa/kasa-crypt/pull/29),
+  [`85d6660`](https://github.com/python-kasa/kasa-crypt/commit/85d6660205a4e65d256a3fb5f460deeec51163cf))
+
+updates: - [github.com/commitizen-tools/commitizen: v4.2.2 →
+  v4.4.1](https://github.com/commitizen-tools/commitizen/compare/v4.2.2...v4.4.1) -
+  [github.com/PyCQA/isort: 6.0.0 → 6.0.1](https://github.com/PyCQA/isort/compare/6.0.0...6.0.1)
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+
+
 ## v0.6.0 (2025-03-05)
 
 ### Chores
