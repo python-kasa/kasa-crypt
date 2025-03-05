@@ -17,6 +17,7 @@ kasa_crypt_module = Extension(
         join("src", "kasa_crypt", "_crypt_impl.pyx"),
     ],
     language="c",
+    extra_compile_args=["-O3", "-g0"],
 )
 
 
