@@ -38,8 +38,8 @@ cython = ">=0.29.35,<3.1.0"
 
 [tool.semantic_release]
 branch = "main"
-version_toml = "pyproject.toml:tool.poetry.version"
-version_variable = "src/kasa_crypt/__init__.py:__version__"
+version_toml = ["pyproject.toml:tool.poetry.version"]
+version_variables = ["src/kasa_crypt/__init__.py:__version__"]
 build_command = "pip install poetry && poetry build"
 
 [tool.pytest.ini_options]
@@ -81,5 +81,5 @@ module = "tests.*"
 allow_untyped_defs = true
 
 [build-system]
-requires = ['setuptools>=65.4.1', 'wheel', 'Cython', "poetry-core>=1.0.0"]
+requires = ['setuptools>=65.4.1', 'wheel', 'Cython>=3', "poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
