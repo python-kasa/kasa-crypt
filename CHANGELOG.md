@@ -1,6 +1,39 @@
 # CHANGELOG
 
 
+## v0.6.2 (2025-04-13)
+
+### Bug Fixes
+
+- Add SPDX license identifier ([#37](https://github.com/python-kasa/kasa-crypt/pull/37),
+  [`7e9e5a5`](https://github.com/python-kasa/kasa-crypt/commit/7e9e5a55a12212cebf71744d2752e9b9e741ab30))
+
+### Chores
+
+- **deps-dev**: Bump pytest-cov from 6.0.0 to 6.1.1
+  ([#36](https://github.com/python-kasa/kasa-crypt/pull/36),
+  [`0ff3084`](https://github.com/python-kasa/kasa-crypt/commit/0ff30840d2b08f06024cf6a54937198125d67c71))
+
+- **pre-commit.ci**: Pre-commit autoupdate
+  ([#34](https://github.com/python-kasa/kasa-crypt/pull/34),
+  [`18fd69a`](https://github.com/python-kasa/kasa-crypt/commit/18fd69a6552c71412033c812acc50ca4cb6628df))
+
+updates: - [github.com/python-poetry/poetry: 2.1.1 →
+  2.1.2](https://github.com/python-poetry/poetry/compare/2.1.1...2.1.2) - [github.com/PyCQA/flake8:
+  7.1.2 → 7.2.0](https://github.com/PyCQA/flake8/compare/7.1.2...7.2.0)
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+
+- **pre-commit.ci**: Pre-commit autoupdate
+  ([#35](https://github.com/python-kasa/kasa-crypt/pull/35),
+  [`49ff1e5`](https://github.com/python-kasa/kasa-crypt/commit/49ff1e53a28fa789e62b9e00c02c59e1e52dee29))
+
+updates: - [github.com/commitizen-tools/commitizen: v4.4.1 →
+  v4.5.0](https://github.com/commitizen-tools/commitizen/compare/v4.4.1...v4.5.0)
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+
+
 ## v0.6.1 (2025-03-05)
 
 ### Bug Fixes
