@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v0.6.3 (2025-05-02)
+
+### Bug Fixes
+
+- Update poetry to v2 ([#39](https://github.com/python-kasa/kasa-crypt/pull/39),
+  [`d481507`](https://github.com/python-kasa/kasa-crypt/commit/d481507a36c4ae58af0092e7e7579bf98ed3c18d))
+
+### Chores
+
+- **pre-commit.ci**: Pre-commit autoupdate
+  ([#38](https://github.com/python-kasa/kasa-crypt/pull/38),
+  [`3ee973e`](https://github.com/python-kasa/kasa-crypt/commit/3ee973eb0a466f7ac7538f6f12e095d7e2857029))
+
+Co-authored-by: pre-commit-ci[bot] <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+
+
 ## v0.6.2 (2025-04-13)
 
 ### Bug Fixes
