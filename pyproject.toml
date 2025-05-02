@@ -1,11 +1,18 @@
-[tool.poetry]
+[project]
 name = "kasa-crypt"
 version = "0.6.2"
 license = "Apache-2.0"
 description = "Fast kasa crypt"
-authors = ["J. Nick Koston <nick@koston.org>"]
+authors = [{ name = "J. Nick Koston", email = "nick@koston.org" }]
 readme = "README.md"
-repository = "https://github.com/bdraco/kasa-crypt"
+requires-python = ">=3.9"
+
+[project.urls]
+"Repository" = "https://github.com/python-kasa/kasa-crypt"
+"Bug Tracker" = "https://github.com/python-kasa/kasa-crypt/issues"
+"Changelog" = "https://github.com/python-kasa/kasa-crypt/blob/main/CHANGELOG.md"
+
+[tool.poetry]
 classifiers = [
     "Development Status :: 2 - Pre-Alpha",
     "Intended Audience :: Developers",
@@ -21,10 +28,6 @@ packages = [
 generate-setup-file = true
 script = "build_ext.py"
 
-[tool.poetry.urls]
-"Bug Tracker" = "https://github.com/bdraco/kasa-crypt/issues"
-"Changelog" = "https://github.com/bdraco/kasa-crypt/blob/main/CHANGELOG.md"
-
 [tool.poetry.dependencies]
 python = "^3.9"
 
@@ -32,13 +35,12 @@ python = "^3.9"
 pytest = ">=7,<9"
 pytest-cov = ">=3,<7"
 
-
 [tool.poetry.group.test.dependencies]
 cython = ">=0.29.35,<3.1.0"
 
 [tool.semantic_release]
 branch = "main"
-version_toml = ["pyproject.toml:tool.poetry.version"]
+version_toml = ["pyproject.toml:project.version"]
 version_variables = ["src/kasa_crypt/__init__.py:__version__"]
 build_command = "pip install poetry && poetry build"
 
@@ -81,5 +83,5 @@ module = "tests.*"
 allow_untyped_defs = true
 
 [build-system]
-requires = ['setuptools>=77.0', 'Cython>=3', "poetry-core>=1.0.0"]
+requires = ['setuptools>=77.0', 'Cython>=3', "poetry-core>=2.1.0"]
 build-backend = "poetry.core.masonry.api"
