@@ -33,7 +33,7 @@ python = "^3.9"
 
 [tool.poetry.group.dev.dependencies]
 pytest = ">=7,<9"
-pytest-cov = ">=3,<7"
+pytest-cov = ">=3,<8"
 
 [tool.poetry.group.test.dependencies]
 cython = ">=0.29.35,<3.2.0"
