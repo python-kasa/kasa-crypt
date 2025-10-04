@@ -1,6 +1,6 @@
 [project]
 name = "kasa-crypt"
-version = "0.6.3"
+version = "1.0.0"
 license = "Apache-2.0"
 description = "Fast kasa crypt"
 authors = [{ name = "J. Nick Koston", email = "nick@koston.org" }]
