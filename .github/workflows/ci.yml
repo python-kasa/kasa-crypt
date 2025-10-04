@@ -14,11 +14,11 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
+      - uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v5
         with:
-          python-version: "3.10"
-      - uses: pre-commit/action@v3.0.1
+          python-version: 3.13
+      - uses: pre-commit/action@2c7b3805fd2a0fd8c1884dcaebf91fc102a13ecd # v3.0.1
 
   # Make sure commit messages follow the conventional commits convention:
   # https://www.conventionalcommits.org
@@ -26,10 +26,10 @@ jobs:
     name: Lint Commit Messages
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
         with:
           fetch-depth: 0
-      - uses: wagoid/commitlint-github-action@v6
+      - uses: wagoid/commitlint-github-action@b948419dd99f3fd78a6548d48f94e3df7f6bf3ed # v6.2.1
 
   test:
     strategy:
@@ -40,6 +40,8 @@ jobs:
           - "3.11"
           - "3.12"
           - "3.13"
+          - "3.14"
+          - "3.14t"
         os:
           - ubuntu-latest
           - macOS-latest
@@ -49,26 +51,28 @@ jobs:
           - "use_cython"
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
+      - name: Install poetry
+        run: pipx install poetry
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v5
         with:
           python-version: ${{ matrix.python-version }}
+          cache: "poetry"
           allow-prereleases: true
-      - uses: snok/install-poetry@v1.4.1
       - name: Install Dependencies
         run: |
           if [ "${{ matrix.extension }}" = "skip_cython" ]; then
             SKIP_CYTHON=1 poetry install --only=main,dev
           else
-            poetry install --only=main,dev
+            REQUIRE_CYTHON=1 poetry install --only=main,dev
           fi
         shell: bash
       - name: Test with Pytest
-        run: poetry run pytest --cov-report=xml -v -Wdefault --cov=bluetooth_data_tools --cov-report=term-missing:skip-covered tests
+        run: poetry run pytest --cov-report=xml
         shell: bash
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
@@ -89,32 +93,32 @@ jobs:
       newest_release_tag: ${{ steps.release.outputs.tag }}
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
         with:
           fetch-depth: 0
           ref: ${{ github.head_ref || github.ref_name }}
 
       # Do a dry run of PSR
       - name: Test release
-        uses: python-semantic-release/python-semantic-release@v10.4.1
+        uses: python-semantic-release/python-semantic-release@4d4cb0ab842247caea1963132c242c62aab1e4d5 # v10.4.1
         if: github.ref_name != 'main'
         with:
-          root_options: --noop
+          no_operation_mode: true
 
       # On main branch: actual PSR + upload to PyPI & GitHub
       - name: Release
-        uses: python-semantic-release/python-semantic-release@v10.4.1
+        uses: python-semantic-release/python-semantic-release@4d4cb0ab842247caea1963132c242c62aab1e4d5 # v10.4.1
         id: release
         if: github.ref_name == 'main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Publish package distributions to PyPI
-        uses: pypa/gh-action-pypi-publish@release/v1
+        uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # release/v1
         if: steps.release.outputs.released == 'true'
 
       - name: Publish package distributions to GitHub Releases
-        uses: python-semantic-release/upload-to-gh-release@main
+        uses: python-semantic-release/upload-to-gh-release@0a92b5d7ebfc15a84f9801ebd1bf706343d43711 # main
         if: steps.release.outputs.released == 'true'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -160,6 +164,14 @@ jobs:
             qemu: armv7l
             musl: "musllinux"
             pyver: cp313
+          - os: ubuntu-latest
+            qemu: armv7l
+            musl: "musllinux"
+            pyver: cp314
+          - os: ubuntu-latest
+            qemu: armv7l
+            musl: "musllinux"
+            pyver: cp314t
           # qemu is slow, make a single
           # runner per Python version
           - os: ubuntu-latest
@@ -178,19 +190,27 @@ jobs:
             qemu: armv7l
             musl: ""
             pyver: cp313
+          - os: ubuntu-latest
+            qemu: armv7l
+            musl: ""
+            pyver: cp314
+          - os: ubuntu-latest
+            qemu: armv7l
+            musl: ""
+            pyver: cp314t
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v4
         with:
           ref: ${{ needs.release.outputs.newest_release_tag }}
           fetch-depth: 0
       # Used to host cibuildwheel
       - name: Set up Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c # v5
         with:
           python-version: "3.12"
       - name: Set up QEMU
         if: ${{ matrix.qemu }}
-        uses: docker/setup-qemu-action@v3
+        uses: docker/setup-qemu-action@29109295f81e9208d7d86ff1c6c12d2833863392 # v3
         with:
           platforms: all
           # This should be temporary
@@ -213,12 +233,12 @@ jobs:
             echo "CIBW_BUILD=${{ matrix.pyver }}*" >> $GITHUB_ENV
           fi
       - name: Build wheels
-        uses: pypa/cibuildwheel@v3.2.0
+        uses: pypa/cibuildwheel@7c619efba910c04005a835b110b057fc28fd6e93 # v3.2.0
         env:
           CIBW_SKIP: cp36-* cp37-* cp38-* cp39-* pp* ${{ matrix.musl == 'musllinux' && '*manylinux*' || '*musllinux*' }}
           REQUIRE_CYTHON: 1
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
           name: wheels-${{ matrix.os }}-${{ matrix.musl }}-${{ matrix.pyver }}-${{ matrix.qemu }}
           path: ./wheelhouse/*.whl
@@ -231,7 +251,7 @@ jobs:
       id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
 
     steps:
-      - uses: actions/download-artifact@v5
+      - uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v4
         with:
           # unpacks default artifact into dist/
           # if `name: artifact` is omitted, the action will create extra parent dir
@@ -239,7 +259,4 @@ jobs:
           pattern: wheels-*
           merge-multiple: true
 
-      - uses:
-          pypa/gh-action-pypi-publish@v1.13.0
-
-          # To test: repository_url: https://test.pypi.org/legacy/
+      - uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e # v1.13.0
